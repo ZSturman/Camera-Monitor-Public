@@ -1,0 +1,12 @@
+{
+  "error": {
+    "code": "capability_unavailable",
+    "details": {
+      "capability": "live_view",
+      "message": "No recording engine is configured on this host (cameras.engine = \"none\").",
+      "reason": "engine_not_configured",
+      "state": "unavailable"
+    },
+    "message": "live view through Home Services is not configured on this host"
+  }
+}

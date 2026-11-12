@@ -1,0 +1,160 @@
+{
+  "capabilities": {
+    "backups": {
+      "archived_file_download": {
+        "state": "available"
+      },
+      "integrity_check": {
+        "reason": "not owned by Home Services during migration",
+        "state": "unavailable"
+      },
+      "repository_initialization": {
+        "reason": "never performed by Home Services",
+        "state": "unavailable"
+      },
+      "repository_status": {
+        "state": "available"
+      },
+      "restore_jobs": {
+        "destination": "fresh directory under files/Restores",
+        "state": "available"
+      },
+      "retention_prune": {
+        "reason": "not owned by Home Services during migration",
+        "state": "unavailable"
+      },
+      "snapshots": {
+        "state": "available"
+      },
+      "source_registration": {
+        "companion_repository": "sftp:backup@host.example.net:/mnt/workspace-backup/restic-repo",
+        "state": "available"
+      }
+    },
+    "cameras": {
+      "engine": "none",
+      "per_camera": {
+        "workspace-pi-camera": {
+          "arming": {
+            "message": "No recording engine is configured on this host (cameras.engine = \"none\").",
+            "reason": "engine_not_configured",
+            "state": "unavailable"
+          },
+          "deletion": {
+            "message": "No recording engine is configured on this host (cameras.engine = \"none\").",
+            "reason": "engine_not_configured",
+            "state": "unavailable"
+          },
+          "export": {
+            "message": "No recording engine is configured on this host (cameras.engine = \"none\").",
+            "reason": "engine_not_configured",
+            "state": "unavailable"
+          },
+          "history": {
+            "message": "No recording engine is configured on this host (cameras.engine = \"none\").",
+            "reason": "engine_not_configured",
+            "state": "unavailable"
+          },
+          "live_view": {
+            "message": "No recording engine is configured on this host (cameras.engine = \"none\").",
+            "reason": "engine_not_configured",
+            "state": "unavailable"
+          },
+          "motion_events": {
+            "message": "No recording engine is configured on this host (cameras.engine = \"none\").",
+            "reason": "engine_not_configured",
+            "state": "unavailable"
+          },
+          "notifications": {
+            "message": "No recording engine is configured on this host (cameras.engine = \"none\").",
+            "reason": "engine_not_configured",
+            "state": "unavailable"
+          },
+          "playback": {
+            "message": "No recording engine is configured on this host (cameras.engine = \"none\").",
+            "reason": "engine_not_configured",
+            "state": "unavailable"
+          },
+          "recording": {
+            "message": "No recording engine is configured on this host (cameras.engine = \"none\").",
+            "reason": "engine_not_configured",
+            "state": "unavailable"
+          }
+        }
+      }
+    },
+    "legacy": {
+      "storage_contract": {
+        "state": "available"
+      }
+    },
+    "media": {
+      "legacy_events": {
+        "read_only": true,
+        "state": "available"
+      },
+      "media_sessions": {
+        "state": "available",
+        "ttl_seconds": 900
+      }
+    },
+    "notifications": {
+      "ntfy_outbox": {
+        "reason": "notifications disabled",
+        "state": "unavailable"
+      }
+    },
+    "storage": {
+      "browse": {
+        "state": "available"
+      },
+      "capacity": {
+        "state": "available"
+      },
+      "create_directory": {
+        "state": "available"
+      },
+      "download": {
+        "range_requests": true,
+        "state": "available"
+      },
+      "managed_trash": {
+        "retention_days": 7,
+        "state": "available"
+      },
+      "move": {
+        "conflict_policies": [
+          "fail",
+          "keep_both"
+        ],
+        "state": "available"
+      },
+      "permanent_delete": {
+        "reason": "not offered; managed Trash purges after the retention window",
+        "state": "unavailable"
+      },
+      "volume_identity_checks": {
+        "state": "available",
+        "uuid_verified": true
+      }
+    },
+    "transfers": {
+      "resumable_upload": {
+        "abandon_after_hours": 24,
+        "conflict_policies": [
+          "keep_both",
+          "fail"
+        ],
+        "max_chunk_bytes": 16777216,
+        "staging_cap_bytes": 2000000000,
+        "state": "available",
+        "verification": [
+          "size",
+          "sha256"
+        ]
+      }
+    }
+  },
+  "observed_at": "2026-10-20T08:00:00Z",
+  "server_id": "srv_0000000000000001"
+}

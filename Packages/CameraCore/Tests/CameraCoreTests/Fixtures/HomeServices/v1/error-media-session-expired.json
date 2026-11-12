@@ -1,0 +1,7 @@
+{
+  "error": {
+    "code": "media_session_expired",
+    "details": {},
+    "message": "media session expired"
+  }
+}

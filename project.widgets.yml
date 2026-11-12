@@ -1,0 +1,41 @@
+# Widget extension and App Group, included by project.yml. Needs an Apple
+# ID signed in to Xcode so automatic signing can register the App Group and
+# the widget extension's App ID.
+targets:
+  CameraMonitor:
+    dependencies:
+      - target: CameraMonitorWidgets
+        embed: true
+    settings:
+      base:
+        CAMERA_MONITOR_ENTITLEMENTS_SUFFIX: -AppGroup
+        CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]: App/CameraMonitor-iOS-AppGroup.entitlements
+        CODE_SIGN_ENTITLEMENTS[sdk=iphonesimulator*]: App/CameraMonitor-iOS-AppGroup.entitlements
+
+  CameraMonitorWidgets:
+    type: app-extension
+    platform: auto
+    supportedDestinations: [iOS, macOS]
+    deploymentTarget:
+      iOS: "17.0"
+      macOS: "14.0"
+    sources:
+      - path: App/Widgets
+        excludes: ["*.entitlements"]
+    dependencies:
+      - package: CameraCore
+      - sdk: WidgetKit.framework
+      - sdk: SwiftUI.framework
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.zacharysturman.cameramonitor.Widgets
+        PRODUCT_NAME: CameraMonitorWidgets
+        CODE_SIGN_ENTITLEMENTS: App/Widgets/CameraMonitorWidgets.entitlements
+        ENABLE_HARDENED_RUNTIME[sdk=macosx*]: true
+        SKIP_INSTALL: true
+    info:
+      path: Generated/CameraMonitorWidgets-Info.plist
+      properties:
+        CFBundleDisplayName: Camera Monitor
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension

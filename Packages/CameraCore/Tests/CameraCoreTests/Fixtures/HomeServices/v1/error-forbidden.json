@@ -1,0 +1,9 @@
+{
+  "error": {
+    "code": "forbidden",
+    "details": {
+      "required_scope": "storage:read"
+    },
+    "message": "token lacks the storage:read scope"
+  }
+}

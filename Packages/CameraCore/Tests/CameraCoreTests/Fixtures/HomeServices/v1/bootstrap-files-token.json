@@ -1,0 +1,59 @@
+{
+  "cameras": [
+    {
+      "id": "workspace-pi-camera",
+      "name": "Workspace Pi Camera"
+    }
+  ],
+  "contract": {
+    "header": "Home-Services-Contract",
+    "supported_majors": [
+      1
+    ],
+    "version": "1.1"
+  },
+  "environment": "development",
+  "product": "home-services",
+  "roots": [
+    {
+      "role": "files",
+      "volume_id": "backup-hdd",
+      "writable": true
+    },
+    {
+      "role": "staging",
+      "volume_id": "backup-hdd",
+      "writable": true
+    },
+    {
+      "role": "recordings",
+      "volume_id": "backup-hdd",
+      "writable": true
+    },
+    {
+      "role": "restic_repository",
+      "volume_id": "backup-hdd",
+      "writable": false
+    },
+    {
+      "role": "legacy_media",
+      "volume_id": "backup-hdd",
+      "writable": false
+    }
+  ],
+  "server_id": "srv_0000000000000001",
+  "token": {
+    "id": "tok_0000000000000001",
+    "name": "Files & Backups (iPhone)",
+    "scopes": [
+      "backups:read",
+      "backups:restore",
+      "jobs:read",
+      "jobs:write",
+      "storage:read",
+      "storage:write",
+      "transfers:write"
+    ]
+  },
+  "version": "0.3.0"
+}

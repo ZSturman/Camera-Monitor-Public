@@ -1,0 +1,118 @@
+name: CameraMonitor
+options:
+  bundleIdPrefix: com.zacharysturman.cameramonitor
+  deploymentTarget:
+    iOS: "17.0"
+    macOS: "14.0"
+  createIntermediateGroups: true
+
+packages:
+  HomeServicesConnection:
+    path: Vendor/HomeServicesConnection
+  CameraCore:
+    path: Packages/CameraCore
+
+# Widgets share status through an App Group; automatic signing needs an
+# Apple ID signed in to Xcode (Settings > Accounts) to register it.
+include:
+  - project.widgets.yml
+
+settings:
+  base:
+    CAMERA_MONITOR_ENTITLEMENTS_SUFFIX: ""
+    DEVELOPMENT_TEAM: YOURTEAMID
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "5"
+    GENERATE_INFOPLIST_FILE: true
+    ENABLE_USER_SCRIPT_SANDBOXING: true
+
+targets:
+  CameraMonitor:
+    type: application
+    platform: auto
+    supportedDestinations: [iOS, macOS]
+    deploymentTarget:
+      iOS: "17.0"
+      macOS: "14.0"
+    sources:
+      - path: App/Sources
+      - path: App/Resources
+        buildPhase: resources
+    dependencies:
+      - package: HomeServicesConnection
+      - package: CameraCore
+      # SwiftUI's VideoPlayer needs AVKit loaded at runtime on macOS;
+      # autolinking alone left AVPlayerView unresolved.
+      - sdk: AVKit.framework
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.zacharysturman.cameramonitor
+        PRODUCT_NAME: Camera Monitor
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_PREVIEWS: true
+        # project.widgets.yml switches to the -AppGroup variants.
+        CODE_SIGN_ENTITLEMENTS[sdk=macosx*]: App/CameraMonitor-macOS$(CAMERA_MONITOR_ENTITLEMENTS_SUFFIX).entitlements
+        ENABLE_HARDENED_RUNTIME[sdk=macosx*]: true
+    info:
+      path: Generated/CameraMonitor-Info.plist
+      properties:
+        CFBundleDisplayName: Camera Monitor
+        LSApplicationCategoryType: public.app-category.utilities
+        UILaunchScreen: {}
+        CFBundleURLTypes:
+          - CFBundleURLName: com.zacharysturman.cameramonitor
+            CFBundleURLSchemes: [cameramonitor]
+        ITSAppUsesNonExemptEncryption: false
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: true
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        NSCameraUsageDescription: Camera Monitor shows live video from cameras attached to this device, such as a USB or built-in camera. Video stays on this device and isn't recorded.
+        NSLocalNetworkUsageDescription: Camera Monitor connects to cameras and camera servers on your local network, such as IP cameras or a Home Services server, so you can view them.
+        # Plain HTTP is allowed only for local-network hosts (IP addresses,
+        # .local and single-label names). Other hosts must use HTTPS.
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+
+  CameraMonitorUITests:
+    type: bundle.ui-testing
+    platform: auto
+    supportedDestinations: [iOS, macOS]
+    deploymentTarget:
+      iOS: "17.0"
+      macOS: "14.0"
+    sources:
+      - path: App/UITests
+    dependencies:
+      - target: CameraMonitor
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.zacharysturman.cameramonitor.UITests
+        TEST_TARGET_NAME: CameraMonitor
+        GENERATE_INFOPLIST_FILE: true
+
+schemes:
+  CameraMonitor:
+    build:
+      targets:
+        CameraMonitor: all
+        CameraMonitorUITests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - package: CameraCore/CameraCoreTests
+        - CameraMonitorUITests
+    archive:
+      config: Release

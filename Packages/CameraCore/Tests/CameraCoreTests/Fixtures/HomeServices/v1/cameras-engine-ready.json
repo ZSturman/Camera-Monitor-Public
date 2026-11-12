@@ -1,0 +1,60 @@
+{
+  "cameras": [
+    {
+      "armed": false,
+      "armed_updated_at": null,
+      "capabilities": {
+        "arming": {
+          "effect": "motion notifications only; recording continues while disarmed",
+          "state": "available"
+        },
+        "deletion": {
+          "granularity": "recording",
+          "state": "available"
+        },
+        "export": {
+          "format": "mp4",
+          "state": "available"
+        },
+        "history": {
+          "state": "available"
+        },
+        "live_view": {
+          "protocol": "hls",
+          "state": "available"
+        },
+        "motion_events": {
+          "detector": "frame_difference",
+          "state": "available"
+        },
+        "notifications": {
+          "state": "available",
+          "transport": "ntfy"
+        },
+        "playback": {
+          "protocol": "hls",
+          "state": "available"
+        },
+        "recording": {
+          "continuous_retention_hours": 24,
+          "mode": "continuous+motion",
+          "motion_retention_days": 30,
+          "state": "available"
+        }
+      },
+      "engine": "hls-recorder",
+      "id": "workspace-pi-camera",
+      "kind": "usb",
+      "name": "Workspace Pi Camera",
+      "status": {
+        "armed": false,
+        "last_video_at": "2026-10-20T08:16:29Z",
+        "observed_at": "2026-10-20T08:16:31Z",
+        "reason": null,
+        "recording": true,
+        "state": "recording"
+      }
+    }
+  ],
+  "engine": "hls-recorder"
+}

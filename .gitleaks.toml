@@ -1,0 +1,10 @@
+title = "Public snapshot secret scanning"
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Deliberately invalid token in authentication-negative test"
+condition = "AND"
+paths = ['''Packages/CameraCore/Tests/CameraCoreTests/HomeServicesLiveServerTests\.swift$''']
+regexTarget = "secret"
+regexes = ['''^hst_tok_0\.wrong$''']

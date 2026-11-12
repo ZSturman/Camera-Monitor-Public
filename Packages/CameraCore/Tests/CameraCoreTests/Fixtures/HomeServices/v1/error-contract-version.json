@@ -1,0 +1,13 @@
+{
+  "error": {
+    "code": "contract_version_unsupported",
+    "details": {
+      "requested": "2",
+      "server_version": "0.3.0",
+      "supported_majors": [
+        1
+      ]
+    },
+    "message": "this server implements contract 1.1; update the client or server"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "error": {
+    "code": "capability_unavailable",
+    "details": {
+      "capability": "arming",
+      "message": "No recording engine is configured on this host (cameras.engine = \"none\").",
+      "reason": "engine_not_configured",
+      "state": "unavailable"
+    },
+    "message": "cannot arm: no recording engine is configured on this host"
+  }
+}

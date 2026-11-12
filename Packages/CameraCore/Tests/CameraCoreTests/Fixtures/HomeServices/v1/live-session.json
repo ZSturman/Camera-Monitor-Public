@@ -1,0 +1,6 @@
+{
+  "expires_at": "2026-10-20T08:18:31Z",
+  "expiry": "sliding",
+  "protocol": "hls",
+  "url": "/api/v1/media/sessions/fixture-secret-0007/index.m3u8"
+}

@@ -1,0 +1,38 @@
+{
+  "next_cursor": null,
+  "recordings": [
+    {
+      "active": true,
+      "camera_id": "workspace-pi-camera",
+      "ended_at": null,
+      "id": "evt_workspace-pi-camera_fixture_2",
+      "kind": "motion",
+      "playable": false,
+      "protected": false,
+      "size_bytes": 0,
+      "started_at": "2026-10-20T08:16:23Z"
+    },
+    {
+      "active": false,
+      "camera_id": "workspace-pi-camera",
+      "ended_at": "2026-10-20T08:02:13Z",
+      "id": "evt_workspace-pi-camera_fixture_1",
+      "kind": "motion",
+      "playable": true,
+      "protected": false,
+      "size_bytes": 564,
+      "started_at": "2026-10-20T08:01:31Z"
+    },
+    {
+      "active": true,
+      "camera_id": "workspace-pi-camera",
+      "ended_at": null,
+      "id": "hr_2026102008",
+      "kind": "continuous",
+      "playable": true,
+      "protected": false,
+      "size_bytes": 1128,
+      "started_at": "2026-10-20T08:01:01Z"
+    }
+  ]
+}
